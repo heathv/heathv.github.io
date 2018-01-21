@@ -1,34 +1,23 @@
-<!DOCTYPE html>
-<html>
- <head>
-   <meta charset="UTF-8">
-   <title>title</title>
- <link rel="stylesheet" href="//fonts.googleapis.com/css?family=font1|font2|etc" type="text/css">
- <link rel="stylesheet" href="stylesheet.css" type="text/css">
- <script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-XXXXXXXX-Y']);
-  _gaq.push(['_trackPageview']);
-  (function()
-  {
-   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
- </script>
- </head>
- <body>
+---
+layout: default
+---
 
-   <h3>hello world</h3>
+<div class="home">
 
- <script type="text/javascript">
-  function autorun()
-  {
+  <h1 class="page-heading">Posts</h1>
 
-  }
-  if (window.addEventListener) window.addEventListener("load", autorun, false);
-  else if (window.attachEvent) window.attachEvent("onload", autorun);
-  else window.onload = autorun;
- </script>
- </body>
-</html>
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li>
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+
+        <h2>
+          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        </h2>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+
+</div>
